@@ -65,22 +65,24 @@ ASGI_APPLICATION = 'smart_stadium.asgi.application'
 
 # Database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('PGDATABASE'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': os.environ.get('POSTGRES_HOST'),
-        'PORT': '5432',
-    }
+    # Local Database
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': os.environ.get('POSTGRES_DATABASE'),
+    #     'NAME': os.environ.get('PGDATABASE'),
     #     'USER': os.environ.get('POSTGRES_USER'),
     #     'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
     #     'HOST': os.environ.get('POSTGRES_HOST'),
     #     'PORT': '5432',
     # }
+    # Neon Database
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DATABASE'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_HOST'),
+        'PORT': '5432',
+    }
 }
 
 # Password validation
