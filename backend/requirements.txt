@@ -1,0 +1,9 @@
+django
+djangorestframework
+pandas
+django-cors-headers
+channels
+daphne
+psycopg2-binary
+python-dotenv
+whitenoise

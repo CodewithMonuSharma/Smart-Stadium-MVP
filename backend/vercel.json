@@ -1,0 +1,18 @@
+{
+    "builds": [
+        {
+            "src": "smart_stadium/wsgi.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "15mb",
+                "runtime": "python3.12"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "smart_stadium/wsgi.py"
+        }
+    ]
+}
