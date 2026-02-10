@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Ticket, Users, Zap, ShoppingBag, Activity, ArrowRight, Trophy } from 'lucide-react';
+import { Ticket, Users, Zap, ShoppingBag, ArrowRight, Trophy } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { motion } from 'framer-motion';
