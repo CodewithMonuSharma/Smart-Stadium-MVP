@@ -162,3 +162,8 @@ CHANNEL_LAYERS = {
 }
 ALLOWED_HOSTS = ['.vercel.app']
 DEBUG = False
+import os
+
+CORS_ALLOWED_ORIGINS = [
+    os.environ.get("FRONTEND_URL"),
+]
