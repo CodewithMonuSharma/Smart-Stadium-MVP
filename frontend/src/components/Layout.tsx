@@ -18,7 +18,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     const handleLogout = async () => {
         try {
             await logout();
-            window.location.href = '/login'; // Force clear state and redirect
+            window.location.href = '/'; // Force clear state and redirect to landing page
         } catch (error) {
             console.error("Logout failed", error);
         }
