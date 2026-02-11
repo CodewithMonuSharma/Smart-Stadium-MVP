@@ -10,7 +10,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-mock-key-for-development')
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '.vercel.app,now.sh,127.0.0.1,localhost').split(',')
 
 # Application definition
 INSTALLED_APPS = [
@@ -109,35 +108,48 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# CORS & Session Security
+# ==============================
+# CORS & Session Security (FINAL)
+# ==============================
+
 CORS_ALLOW_CREDENTIALS = True
 
-# Get frontend URL from env var, default to localhost for development
-FRONTEND_URL = os.getenv('FRONTEND_URL', 'http://localhost:5173')
+# Detect environment
+IS_PRODUCTION = os.getenv('VERCEL_ENV') or not DEBUG
+
+# Get frontend URL from env var
+default_frontend = "https://smart-stadium-frontend.vercel.app" if IS_PRODUCTION else "http://localhost:5173"
+FRONTEND_URL = os.getenv("FRONTEND_URL", default_frontend)
 
 CORS_ALLOWED_ORIGINS = [
     FRONTEND_URL,
-    "http://127.0.0.1:5173",
     "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://smart-stadium-frontend.vercel.app"
 ]
+
 CSRF_TRUSTED_ORIGINS = [
     FRONTEND_URL,
-    "http://127.0.0.1:5173",
     "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://smart-stadium-frontend.vercel.app"
 ]
 
+# Cookie Settings
+# Development: Lax (works on localhost), Production: None (required for cross-site)
+SESSION_COOKIE_SAMESITE = 'None' if IS_PRODUCTION else 'Lax'
+CSRF_COOKIE_SAMESITE = 'None' if IS_PRODUCTION else 'Lax'
 
-# Ensure sessions work across different ports on localhost
-SESSION_COOKIE_SAMESITE = 'Lax'
-CSRF_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SECURE = True if IS_PRODUCTION else False  # HTTPS only in prod
+CSRF_COOKIE_SECURE = True if IS_PRODUCTION else False
+
 SESSION_COOKIE_HTTPONLY = True
-CSRF_COOKIE_HTTPONLY = False  # Usually False so JS can read it for CSRF protection
-
+CSRF_COOKIE_HTTPONLY = False
 
 # DRF
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny', # Allow any for now to simplify frontend fetch
+        'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
@@ -151,5 +163,5 @@ CHANNEL_LAYERS = {
         "BACKEND": "channels.layers.InMemoryChannelLayer"
     }
 }
-STATIC_ROOT = "staticfiles"
+
 ALLOWED_HOSTS = ["*"]
