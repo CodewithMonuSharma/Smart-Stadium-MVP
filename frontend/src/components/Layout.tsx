@@ -16,6 +16,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     const location = useLocation();
     const { logout } = useAuth();
 
+    const handleLogout = async () => {
+        try {
+            await logout();
+            window.location.href = '/login'; // Force clear state and redirect
+        } catch (error) {
+            console.error("Logout failed", error);
+        }
+    };
+
     return (
         <div className="flex h-screen bg-gray-50">
             {/* Sidebar */}
@@ -46,8 +55,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </nav>
                 <div className="p-4 border-t border-gray-100 flex flex-col gap-2">
                     <button
-                        onClick={logout}
-                        className="flex items-center space-x-3 px-4 py-3 rounded-lg text-red-600 hover:bg-red-50 transition-colors bg-white font-bold w-full"
+                        onClick={handleLogout}
+                        className="flex items-center space-x-3 px-4 py-3 rounded-lg text-red-600 hover:bg-red-50 transition-colors bg-white font-bold w-full cursor-pointer hover:shadow-sm"
                     >
                         <LogOut size={20} />
                         <span>Logout</span>
