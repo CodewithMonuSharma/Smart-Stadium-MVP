@@ -43,7 +43,10 @@ def api_login(request):
 @api_view(['POST'])
 def api_logout(request):
     logout(request)
-    return Response({"success": True})
+    response = Response({"success": True})
+    response.delete_cookie('sessionid')
+    response.delete_cookie('csrftoken')
+    return response
 
 @api_view(['GET'])
 @ensure_csrf_cookie
