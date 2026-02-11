@@ -8,12 +8,13 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
-SECRET_KEY = 'django-insecure-mock-key-for-development'
-DEBUG = True
-ALLOWED_HOSTS = ['.vercel.app', 'now.sh', '127.0.0.1', 'localhost']
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-mock-key-for-development')
+DEBUG = os.getenv('DEBUG', 'True') == 'True'
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '.vercel.app,now.sh,127.0.0.1,localhost').split(',')
 
 # Application definition
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -65,23 +66,13 @@ ASGI_APPLICATION = 'smart_stadium.asgi.application'
 
 # Database
 DATABASES = {
-    # Local Database
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': os.environ.get('PGDATABASE'),
-    #     'USER': os.environ.get('POSTGRES_USER'),
-    #     'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-    #     'HOST': os.environ.get('POSTGRES_HOST'),
-    #     'PORT': '5432',
-    # }
-    # Neon Database
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DATABASE'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': os.environ.get('POSTGRES_HOST'),
-        'PORT': '5432',
+        'NAME': os.getenv('POSTGRES_DATABASE') or os.getenv('DB_NAME', 'smart_stadium_db'),
+        'USER': os.getenv('POSTGRES_USER') or os.getenv('DB_USER', 'postgres'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD') or os.getenv('DB_PASSWORD', ''),
+        'HOST': os.getenv('POSTGRES_HOST') or os.getenv('DB_HOST', '127.0.0.1'),
+        'PORT': os.getenv('POSTGRES_PORT') or os.getenv('DB_PORT', '5432'),
     }
 }
 
@@ -160,10 +151,3 @@ CHANNEL_LAYERS = {
         "BACKEND": "channels.layers.InMemoryChannelLayer"
     }
 }
-ALLOWED_HOSTS = ['.vercel.app']
-DEBUG = False
-import os
-
-CORS_ALLOWED_ORIGINS = [
-    os.environ.get("FRONTEND_URL"),
-]
