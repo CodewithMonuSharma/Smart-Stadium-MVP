@@ -15,6 +15,8 @@ const AuthContext = createContext<AuthContextType | null>(null);
 // Configure axios base URL
 axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
 axios.defaults.withCredentials = true; // IMPORTANT for cookies (session id)
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<any>(null);

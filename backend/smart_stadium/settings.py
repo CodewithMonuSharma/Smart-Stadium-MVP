@@ -128,11 +128,12 @@ CORS_ALLOWED_ORIGINS = [
     "https://smart-stadium-frontend.vercel.app"
 ]
 
+# Allow all Vercel subdomains for CSRF
 CSRF_TRUSTED_ORIGINS = [
+    "https://*.vercel.app",
     FRONTEND_URL,
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://smart-stadium-frontend.vercel.app"
 ]
 
 # Cookie Settings
@@ -140,11 +141,11 @@ CSRF_TRUSTED_ORIGINS = [
 SESSION_COOKIE_SAMESITE = 'None' if IS_PRODUCTION else 'Lax'
 CSRF_COOKIE_SAMESITE = 'None' if IS_PRODUCTION else 'Lax'
 
-SESSION_COOKIE_SECURE = True if IS_PRODUCTION else False  # HTTPS only in prod
+SESSION_COOKIE_SECURE = True if IS_PRODUCTION else False
 CSRF_COOKIE_SECURE = True if IS_PRODUCTION else False
 
 SESSION_COOKIE_HTTPONLY = True
-CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_HTTPONLY = False # Must be False for Axios to read it
 
 # DRF
 REST_FRAMEWORK = {

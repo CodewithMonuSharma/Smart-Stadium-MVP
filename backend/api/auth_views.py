@@ -51,6 +51,7 @@ def get_csrf_token(request):
     return Response({'csrfToken': get_token(request)})
 
 @api_view(['GET'])
+@ensure_csrf_cookie
 def get_user(request):
     if request.user.is_authenticated:
         return Response({
