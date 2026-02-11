@@ -151,6 +151,10 @@ CSRF_COOKIE_SECURE = True if IS_PRODUCTION else False
 SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_HTTPONLY = False # Must be False for Axios to read it
 
+# Session Persistence
+SESSION_COOKIE_AGE = 1209600  # 2 weeks in seconds
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+
 # DRF
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
