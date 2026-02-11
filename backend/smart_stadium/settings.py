@@ -136,6 +136,10 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:5173",
 ]
 
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.vercel\.app$",
+]
+
 # Cookie Settings
 # Development: Lax (works on localhost), Production: None (required for cross-site)
 SESSION_COOKIE_SAMESITE = 'None' if IS_PRODUCTION else 'Lax'
