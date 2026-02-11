@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import {
     Activity,
@@ -22,13 +21,9 @@ import { LayoutDashboard } from 'lucide-react';
 
 export default function Landing() {
     const navigate = useNavigate();
-    const { user, isLoading } = useAuth();
+    const { user } = useAuth();
 
-    useEffect(() => {
-        if (!isLoading && user) {
-            navigate('/dashboard');
-        }
-    }, [user, isLoading, navigate]);
+    // Removed auto-redirect to dashboard to allow authenticated users to see the landing page
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-blue-50 font-['Outfit']">
