@@ -1,0 +1,644 @@
+[
+{
+  "model": "api.event",
+  "pk": 2,
+  "fields": {
+    "name": "World Cup Qualifier: IND vs AUS",
+    "description": "High-stakes international cricket match.",
+    "start_time": "2026-02-10T19:41:10.245Z",
+    "end_time": "2026-02-11T03:41:10.245Z",
+    "status": "active",
+    "expected_attendance": 45000
+  }
+},
+{
+  "model": "api.event",
+  "pk": 3,
+  "fields": {
+    "name": "Rock Fest 2026",
+    "description": "Annual music festival featuring top rock bands.",
+    "start_time": "2026-02-12T19:41:10.246Z",
+    "end_time": "2026-02-13T01:41:10.246Z",
+    "status": "upcoming",
+    "expected_attendance": 25000
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 3,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 0",
+    "ticket_code": "T-46066",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.9,
+    "seat_number": "S-0",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 4,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 1",
+    "ticket_code": "T-88045",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.15,
+    "seat_number": "S-1",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 5,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 2",
+    "ticket_code": "T-93704",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.15,
+    "seat_number": "S-2",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 6,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 3",
+    "ticket_code": "T-40970",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.2,
+    "seat_number": "S-3",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 7,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 4",
+    "ticket_code": "T-39164",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.1,
+    "seat_number": "S-4",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 8,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 5",
+    "ticket_code": "T-29560",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.15,
+    "seat_number": "S-5",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 9,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 6",
+    "ticket_code": "T-45083",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.9,
+    "seat_number": "S-6",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 10,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 7",
+    "ticket_code": "T-11359",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.9,
+    "seat_number": "S-7",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 11,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 8",
+    "ticket_code": "T-81694",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.2,
+    "seat_number": "S-8",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 12,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 9",
+    "ticket_code": "T-26052",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.9,
+    "seat_number": "S-9",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 13,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 10",
+    "ticket_code": "T-76411",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.15,
+    "seat_number": "S-10",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 14,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 11",
+    "ticket_code": "T-19193",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.9,
+    "seat_number": "S-11",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 15,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 12",
+    "ticket_code": "T-97084",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.9,
+    "seat_number": "S-12",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 16,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 13",
+    "ticket_code": "T-45545",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.9,
+    "seat_number": "S-13",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 17,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 14",
+    "ticket_code": "T-58818",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.15,
+    "seat_number": "S-14",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 18,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 15",
+    "ticket_code": "T-62564",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.15,
+    "seat_number": "S-15",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 19,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 16",
+    "ticket_code": "T-36954",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.9,
+    "seat_number": "S-16",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 20,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 17",
+    "ticket_code": "T-63177",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.15,
+    "seat_number": "S-17",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 21,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 18",
+    "ticket_code": "T-31995",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.9,
+    "seat_number": "S-18",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 22,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 19",
+    "ticket_code": "T-50816",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.2,
+    "seat_number": "S-19",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 23,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 20",
+    "ticket_code": "T-44216",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.15,
+    "seat_number": "S-20",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 24,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 21",
+    "ticket_code": "T-60529",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.2,
+    "seat_number": "S-21",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 25,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 22",
+    "ticket_code": "T-12391",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.15,
+    "seat_number": "S-22",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 26,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 23",
+    "ticket_code": "T-16631",
+    "is_validated": false,
+    "entry_time": null,
+    "fraud_score": 0.2,
+    "seat_number": "S-23",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.ticket",
+  "pk": 27,
+  "fields": {
+    "event": 2,
+    "customer_name": "Guest 24",
+    "ticket_code": "T-18158",
+    "is_validated": true,
+    "entry_time": "2026-02-10T19:42:30.020Z",
+    "fraud_score": 0.15,
+    "seat_number": "S-24",
+    "price": "120.00"
+  }
+},
+{
+  "model": "api.crowdzone",
+  "pk": 4,
+  "fields": {
+    "name": "North Stand (Premium)",
+    "capacity": 10000,
+    "current_count": 8500,
+    "status": "yellow",
+    "last_updated": "2026-02-10T19:41:10.247Z"
+  }
+},
+{
+  "model": "api.crowdzone",
+  "pk": 5,
+  "fields": {
+    "name": "South Stand (General)",
+    "capacity": 15000,
+    "current_count": 14200,
+    "status": "red",
+    "last_updated": "2026-02-10T19:41:10.248Z"
+  }
+},
+{
+  "model": "api.crowdzone",
+  "pk": 6,
+  "fields": {
+    "name": "East Stand",
+    "capacity": 8000,
+    "current_count": 4000,
+    "status": "green",
+    "last_updated": "2026-02-10T19:41:10.248Z"
+  }
+},
+{
+  "model": "api.crowdzone",
+  "pk": 7,
+  "fields": {
+    "name": "West Stand",
+    "capacity": 8000,
+    "current_count": 3500,
+    "status": "green",
+    "last_updated": "2026-02-10T19:41:10.249Z"
+  }
+},
+{
+  "model": "api.crowdzone",
+  "pk": 8,
+  "fields": {
+    "name": "VIP Boxes",
+    "capacity": 1000,
+    "current_count": 950,
+    "status": "red",
+    "last_updated": "2026-02-10T19:41:10.252Z"
+  }
+},
+{
+  "model": "api.crowdzone",
+  "pk": 9,
+  "fields": {
+    "name": "Press Gallery",
+    "capacity": 500,
+    "current_count": 150,
+    "status": "green",
+    "last_updated": "2026-02-10T19:41:10.253Z"
+  }
+},
+{
+  "model": "api.energymeter",
+  "pk": 3,
+  "fields": {
+    "name": "Main Floodlights East",
+    "location": "Roof East",
+    "current_usage_kw": 250.5,
+    "status": "optimal",
+    "last_reading_time": "2026-02-10T19:41:10.254Z"
+  }
+},
+{
+  "model": "api.energymeter",
+  "pk": 4,
+  "fields": {
+    "name": "Main Floodlights West",
+    "location": "Roof West",
+    "current_usage_kw": 245.2,
+    "status": "optimal",
+    "last_reading_time": "2026-02-10T19:41:10.256Z"
+  }
+},
+{
+  "model": "api.energymeter",
+  "pk": 5,
+  "fields": {
+    "name": "Jumbotron North",
+    "location": "North End",
+    "current_usage_kw": 45.0,
+    "status": "optimal",
+    "last_reading_time": "2026-02-10T19:41:10.257Z"
+  }
+},
+{
+  "model": "api.energymeter",
+  "pk": 6,
+  "fields": {
+    "name": "Arena HVAC System",
+    "location": "Level 0",
+    "current_usage_kw": 580.0,
+    "status": "high",
+    "last_reading_time": "2026-02-10T19:41:10.257Z"
+  }
+},
+{
+  "model": "api.energymeter",
+  "pk": 7,
+  "fields": {
+    "name": "Kitchen & Concessions",
+    "location": "Concourse",
+    "current_usage_kw": 120.4,
+    "status": "optimal",
+    "last_reading_time": "2026-02-10T19:41:10.258Z"
+  }
+},
+{
+  "model": "api.merchandiseitem",
+  "pk": 3,
+  "fields": {
+    "name": "Official Team Jersey",
+    "category": "Apparel",
+    "price": "99.99",
+    "stock_quantity": 1000,
+    "sold_count": 450
+  }
+},
+{
+  "model": "api.merchandiseitem",
+  "pk": 4,
+  "fields": {
+    "name": "Stadium Scarf",
+    "category": "Accessories",
+    "price": "29.99",
+    "stock_quantity": 500,
+    "sold_count": 280
+  }
+},
+{
+  "model": "api.merchandiseitem",
+  "pk": 5,
+  "fields": {
+    "name": "Commemorative Coin",
+    "category": "Collectibles",
+    "price": "15.00",
+    "stock_quantity": 200,
+    "sold_count": 195
+  }
+},
+{
+  "model": "api.merchandiseitem",
+  "pk": 6,
+  "fields": {
+    "name": "Foam Finger",
+    "category": "Fan Gear",
+    "price": "12.50",
+    "stock_quantity": 2000,
+    "sold_count": 1100
+  }
+},
+{
+  "model": "api.merchandiseitem",
+  "pk": 7,
+  "fields": {
+    "name": "Stadium Poster",
+    "category": "Decor",
+    "price": "20.00",
+    "stock_quantity": 300,
+    "sold_count": 45
+  }
+},
+{
+  "model": "api.systemlog",
+  "pk": 1,
+  "fields": {
+    "timestamp": "2026-02-10T19:41:10.281Z",
+    "module": "CROWD",
+    "level": "WARNING",
+    "message": "South Stand reaching 95% capacity. Divert crowd to East Gate."
+  }
+},
+{
+  "model": "api.systemlog",
+  "pk": 2,
+  "fields": {
+    "timestamp": "2026-02-10T19:41:10.282Z",
+    "module": "ENERGY",
+    "level": "INFO",
+    "message": "Floodlight systems synchronized."
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$HxGYGybz4oYgKKbh8u4Wqk$b+MHu8or1OhdDDwk4ZqbR1tZh9RmEXj1muZUj2RSUDQ=",
+    "last_login": "2026-02-10T19:36:14.059Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-02-10T19:35:53.372Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$r5F3aAkCXwzYBmUxDZi4mt$17Z+Vn6JwZ0MprCeOpu8ihysS9Srsms4E340IjftVEU=",
+    "last_login": "2026-02-10T20:19:50.797Z",
+    "is_superuser": false,
+    "username": "monu",
+    "first_name": "",
+    "last_name": "",
+    "email": "monu@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-10T19:41:49.250Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$NOOMH2DlbMCsoSC8v7i5jw$jgGzJ7Mdn+2ndCZR08+6rh0Z7Opq+YWW48ry5nPwb/U=",
+    "last_login": "2026-02-11T04:06:14.825Z",
+    "is_superuser": false,
+    "username": "monu`",
+    "first_name": "",
+    "last_name": "",
+    "email": "monu@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-11T04:06:13.814Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$nWGPxsDvsxAIH7fY3I7eqN$FfAlwLQ3N9pH46g6zdI1YRT+umOK4lj2Ce6kJCUgI/8=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "monu1",
+    "first_name": "",
+    "last_name": "",
+    "email": "monu1@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-02-11T04:39:05.789Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
