@@ -152,3 +152,4 @@ CHANNEL_LAYERS = {
     }
 }
 STATIC_ROOT = "staticfiles"
+ALLOWED_HOSTS = ["*"]
