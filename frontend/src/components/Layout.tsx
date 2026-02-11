@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Ticket, Users, Zap, ShoppingBag, BarChart3, Leaf, LogOut, Globe } from 'lucide-react';
+import { LogOut, Globe } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 
 const navItems = [
@@ -48,8 +48,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                         key={item.path}
                                         to={item.path}
                                         className={`inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors duration-200 ${isActive
-                                                ? 'text-purple-600 font-bold'
-                                                : 'text-gray-500 hover:text-gray-700'
+                                            ? 'text-purple-600 font-bold'
+                                            : 'text-gray-500 hover:text-gray-700'
                                             }`}
                                     >
                                         {item.name}
