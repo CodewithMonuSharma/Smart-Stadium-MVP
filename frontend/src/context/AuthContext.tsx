@@ -24,7 +24,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     const checkAuth = async () => {
         try {
-            // First get CSRF token if needed, or just check session
+            // First ensure we have a CSRF token
+            await axios.get('/auth/csrf/');
+
+            // Then check if the user is authenticated
             const res = await axios.get('/auth/user/');
             if (res.data.is_authenticated) {
                 setUser(res.data.user);
