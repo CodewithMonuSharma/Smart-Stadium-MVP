@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -10,14 +10,10 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
-    const { login, user, isLoading, loginWithSocial } = useAuth();
+    const { login, loginWithSocial } = useAuth();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!isLoading && user) {
-            navigate("/dashboard");
-        }
-    }, [user, isLoading, navigate]);
+    // Removed auto-redirect to allow user to see login form even if session exists
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
