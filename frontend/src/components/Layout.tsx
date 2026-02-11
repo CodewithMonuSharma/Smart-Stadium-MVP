@@ -1,15 +1,14 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Ticket, Users, Zap, ShoppingBag, BarChart3, Leaf, LogOut } from 'lucide-react';
+import { LayoutDashboard, Ticket, Users, Zap, ShoppingBag, BarChart3, Leaf, LogOut, Globe } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 
-const sidebarItems = [
-    { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
-    { name: 'Ticketing', path: '/ticketing', icon: Ticket },
-    { name: 'Crowd', path: '/crowd', icon: Users },
-    { name: 'Energy', path: '/energy', icon: Zap },
-    { name: 'Merchandise', path: '/merchandise', icon: ShoppingBag },
-    { name: 'Analytics', path: '/analytics', icon: BarChart3 },
-    { name: 'Sustainability', path: '/sustainability', icon: Leaf },
+const navItems = [
+    { name: 'Dashboard', path: '/dashboard' },
+    { name: 'Ticketing', path: '/ticketing' },
+    { name: 'Crowd', path: '/crowd' },
+    { name: 'Energy', path: '/energy' },
+    { name: 'Analytics', path: '/analytics' },
+    { name: 'Sustainability', path: '/sustainability' },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -26,67 +25,57 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     };
 
     return (
-        <div className="flex h-screen bg-gray-50">
-            {/* Sidebar */}
-            <div className="w-64 bg-white border-r border-gray-200 hidden md:flex flex-col">
-                <div className="p-6">
-                    <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
-                        Smart Stadium
-                    </Link>
-                </div>
-                <nav className="mt-6 px-4 space-y-2 flex-1">
-                    {sidebarItems.map((item) => {
-                        const isActive = location.pathname === item.path;
-                        const Icon = item.icon;
-                        return (
-                            <Link
-                                key={item.path}
-                                to={item.path}
-                                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${isActive
-                                    ? 'bg-purple-50 text-purple-700 border-r-4 border-purple-600'
-                                    : 'text-gray-600 hover:bg-gray-50'
-                                    }`}
-                            >
-                                <Icon size={20} />
-                                <span className="font-medium">{item.name}</span>
-                            </Link>
-                        );
-                    })}
-                </nav>
-                <div className="p-4 border-t border-gray-100 flex flex-col gap-2">
-                    <button
-                        onClick={handleLogout}
-                        className="flex items-center space-x-3 px-4 py-3 rounded-lg text-red-600 hover:bg-red-50 transition-colors bg-white font-bold w-full cursor-pointer hover:shadow-sm"
-                    >
-                        <LogOut size={20} />
-                        <span>Logout</span>
-                    </button>
-                </div>
-            </div>
+        <div className="min-h-screen bg-gray-50 font-sans">
+            {/* Horizontal Navbar */}
+            <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex justify-between h-16 items-center">
 
-            {/* Main Content */}
-            <div className="flex-1 flex flex-col overflow-hidden">
-                {/* Header */}
-                <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 shadow-sm">
-                    <h2 className="text-xl font-semibold text-gray-800">
-                        {sidebarItems.find(i => i.path === location.pathname)?.name || 'Dashboard'}
-                    </h2>
-                    <div className="flex items-center space-x-4">
-                        <div className="flex flex-col items-end">
-                            <span className="text-sm font-medium text-gray-900">Monu Sharma</span>
-                            <span className="text-xs text-gray-500">Administrator</span>
+                        {/* Logo Section */}
+                        <div className="flex-shrink-0 flex items-center space-x-2">
+                            <Globe className="h-8 w-8 text-blue-500" />
+                            <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
+                                Smart Stadium
+                            </Link>
                         </div>
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-500 to-blue-500 flex items-center justify-center text-white font-bold shadow-md">
-                            MS
+
+                        {/* Navigation Links (Center) */}
+                        <div className="hidden md:flex space-x-8">
+                            {navItems.map((item) => {
+                                const isActive = location.pathname === item.path;
+                                return (
+                                    <Link
+                                        key={item.path}
+                                        to={item.path}
+                                        className={`inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors duration-200 ${isActive
+                                                ? 'text-purple-600 font-bold'
+                                                : 'text-gray-500 hover:text-gray-700'
+                                            }`}
+                                    >
+                                        {item.name}
+                                    </Link>
+                                );
+                            })}
+                        </div>
+
+                        {/* Right Section: Logout Button */}
+                        <div className="flex items-center">
+                            <button
+                                onClick={handleLogout}
+                                className="flex items-center space-x-2 px-4 py-2 rounded-md bg-gradient-to-r from-purple-600 to-blue-500 text-white font-medium hover:shadow-lg transition-all transform hover:scale-105 active:scale-95"
+                            >
+                                <LogOut size={18} />
+                                <span>Logout</span>
+                            </button>
                         </div>
                     </div>
-                </header>
+                </div>
+            </nav>
 
-                {/* Page Content */}
-                <main className="flex-1 overflow-auto p-4 md:p-8">
-                    {children}
-                </main>
-            </div>
+            {/* Main Content */}
+            <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                {children}
+            </main>
         </div>
     );
 }
