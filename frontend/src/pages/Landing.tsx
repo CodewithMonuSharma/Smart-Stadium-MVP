@@ -16,12 +16,10 @@ import {
     Facebook
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useAuth } from '@/context/AuthContext';
 import { LayoutDashboard } from 'lucide-react';
 
 export default function Landing() {
     const navigate = useNavigate();
-    const { user } = useAuth();
 
     // Removed auto-redirect to dashboard to allow authenticated users to see the landing page
 
@@ -51,8 +49,7 @@ export default function Landing() {
                             ))}
                         </div>
                         <div className="flex gap-4">
-                            <Button variant="ghost" className="font-bold text-slate-600" onClick={() => navigate('/login')}>Login</Button>
-                            <Button className="bg-slate-900 text-white rounded-full px-6 font-bold shadow-lg" onClick={() => navigate('/register')}>Get Started</Button>
+                            <Button className="bg-slate-900 text-white rounded-full px-6 font-bold shadow-lg" onClick={() => navigate('/dashboard')}>Enter Dashboard</Button>
                         </div>
                     </div>
                 </div>
@@ -71,7 +68,7 @@ export default function Landing() {
                         >
                             <div className="space-y-4">
                                 <h1 className="text-7xl font-black bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent leading-[1.1] tracking-tighter">
-                                    Welcome {user ? `back, ${user.username}!` : 'to Smart Stadium!'}
+                                    Welcome to Smart Stadium!
                                 </h1>
                                 <p className="text-2xl text-gray-600 font-medium tracking-tight">
                                     Smart Stadium Management System
@@ -244,11 +241,8 @@ export default function Landing() {
                         Experience the future of smart stadium management with AI-powered insights and real-time control
                     </p>
                     <div className="flex flex-wrap items-center justify-center gap-6 pt-6">
-                        <Button onClick={() => navigate('/register')} className="bg-white text-purple-600 hover:bg-slate-50 px-12 py-8 rounded-full text-xl font-black shadow-2xl transition-all hover:scale-105">
-                            Start Free Trial
-                        </Button>
-                        <Button variant="outline" className="bg-white border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-12 py-8 rounded-full text-xl font-black transition-all">
-                            Schedule Demo
+                        <Button onClick={() => navigate('/dashboard')} className="bg-white text-purple-600 hover:bg-slate-50 px-12 py-8 rounded-full text-xl font-black shadow-2xl transition-all hover:scale-105">
+                            Go to Dashboard
                         </Button>
                     </div>
                 </div>

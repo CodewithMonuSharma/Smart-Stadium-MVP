@@ -1,6 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LogOut, Globe } from 'lucide-react';
-import { useAuth } from '@/context/AuthContext';
+import { Globe } from 'lucide-react';
 
 const navItems = [
     { name: 'Dashboard', path: '/dashboard' },
@@ -13,16 +12,6 @@ const navItems = [
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const location = useLocation();
-    const { logout } = useAuth();
-
-    const handleLogout = async () => {
-        try {
-            await logout();
-            window.location.href = '/'; // Force clear state and redirect to landing page
-        } catch (error) {
-            console.error("Logout failed", error);
-        }
-    };
 
     return (
         <div className="min-h-screen bg-gray-50 font-sans">
@@ -48,8 +37,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                         key={item.path}
                                         to={item.path}
                                         className={`inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors duration-200 ${isActive
-                                            ? 'text-purple-600 font-bold'
-                                            : 'text-gray-500 hover:text-gray-700'
+                                                ? 'text-purple-600 font-bold'
+                                                : 'text-gray-500 hover:text-gray-700'
                                             }`}
                                     >
                                         {item.name}
@@ -58,15 +47,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                             })}
                         </div>
 
-                        {/* Right Section: Logout Button */}
-                        <div className="flex items-center">
-                            <button
-                                onClick={handleLogout}
-                                className="flex items-center space-x-2 px-4 py-2 rounded-md bg-gradient-to-r from-purple-600 to-blue-500 text-white font-medium hover:shadow-lg transition-all transform hover:scale-105 active:scale-95"
-                            >
-                                <LogOut size={18} />
-                                <span>Logout</span>
-                            </button>
+                        {/* Right Section: No Login/Logout, Public App */}
+                        <div className="flex items-center space-x-4">
+                            {/* Optional: Add a simple button that fits the public theme if needed */}
                         </div>
                     </div>
                 </div>
