@@ -1,63 +1,100 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Globe } from 'lucide-react';
+import {
+    LayoutDashboard,
+    Ticket,
+    Users,
+    Zap,
+    BarChart3,
+    Leaf,
+    Globe,
+    ShoppingBag
+} from 'lucide-react';
 
 const navItems = [
-    { name: 'Dashboard', path: '/dashboard' },
-    { name: 'Ticketing', path: '/ticketing' },
-    { name: 'Crowd', path: '/crowd' },
-    { name: 'Energy', path: '/energy' },
-    { name: 'Analytics', path: '/analytics' },
-    { name: 'Sustainability', path: '/sustainability' },
+    { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
+    { name: 'Ticketing', path: '/ticketing', icon: Ticket },
+    { name: 'Crowd', path: '/crowd', icon: Users },
+    { name: 'Energy', path: '/energy', icon: Zap },
+    { name: 'Merchandise', path: '/merchandise', icon: ShoppingBag },
+    { name: 'Analytics', path: '/analytics', icon: BarChart3 },
+    { name: 'Sustainability', path: '/sustainability', icon: Leaf },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const location = useLocation();
 
     return (
-        <div className="min-h-screen bg-gray-50 font-sans">
-            {/* Horizontal Navbar */}
-            <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between h-16 items-center">
+        <div className="flex h-screen bg-slate-50 font-['Outfit'] overflow-hidden">
+            {/* Sidebar Navigation */}
+            <aside className="w-64 bg-white border-r border-slate-100 hidden md:flex flex-col h-full shadow-sm z-50">
+                {/* Logo Area */}
+                <div className="h-20 flex items-center px-8 border-b border-slate-50">
+                    <Link to="/" className="flex items-center gap-3 group">
+                        <img src="/logo.png" alt="Logo" className="w-10 h-10 object-contain group-hover:scale-105 transition-transform" />
 
-                        {/* Logo Section */}
-                        <div className="flex-shrink-0 flex items-center space-x-2">
-                            <Globe className="h-8 w-8 text-blue-500" />
-                            <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
-                                Smart Stadium
+                        <span className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                            Smart Stadium
+                        </span>
+                    </Link>
+                </div>
+
+                {/* Navigation Items */}
+                <nav className="flex-1 overflow-y-auto py-6 px-4 space-y-2">
+                    <p className="px-4 text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Main Menu</p>
+                    {navItems.map((item) => {
+                        const isActive = location.pathname === item.path;
+                        const Icon = item.icon;
+
+                        return (
+                            <Link
+                                key={item.path}
+                                to={item.path}
+                                className={`flex items-center gap-4 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group relative ${isActive
+                                    ? 'bg-purple-50 text-purple-700 font-bold shadow-sm'
+                                    : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
+                                    }`}
+                            >
+                                {isActive && (
+                                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-purple-600 rounded-r-full" />
+                                )}
+                                <Icon
+                                    size={20}
+                                    className={`transition-colors ${isActive ? 'text-purple-600' : 'text-slate-400 group-hover:text-slate-600'}`}
+                                />
+                                {item.name}
                             </Link>
-                        </div>
+                        );
+                    })}
+                </nav>
 
-                        {/* Navigation Links (Center) */}
-                        <div className="hidden md:flex space-x-8">
-                            {navItems.map((item) => {
-                                const isActive = location.pathname === item.path;
-                                return (
-                                    <Link
-                                        key={item.path}
-                                        to={item.path}
-                                        className={`inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors duration-200 ${isActive
-                                                ? 'text-purple-600 font-bold'
-                                                : 'text-gray-500 hover:text-gray-700'
-                                            }`}
-                                    >
-                                        {item.name}
-                                    </Link>
-                                );
-                            })}
+                {/* Footer / User Profile Area */}
+                <div className="p-4 border-t border-slate-50">
+                    <div className="flex items-center gap-3 px-4 py-3 bg-slate-50 rounded-xl">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-500 to-blue-500 flex items-center justify-center text-white text-xs font-bold">
+                            MS
                         </div>
-
-                        {/* Right Section: No Login/Logout, Public App */}
-                        <div className="flex items-center space-x-4">
-                            {/* Optional: Add a simple button that fits the public theme if needed */}
+                        <div className="flex-1 min-w-0">
+                            <p className="text-sm font-bold text-slate-800 truncate">Admin User</p>
+                            <p className="text-xs text-slate-500 truncate">System Manager</p>
                         </div>
                     </div>
                 </div>
-            </nav>
+            </aside>
 
-            {/* Main Content */}
-            <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-                {children}
+            {/* Mobile Header (Visible only on small screens) */}
+            <div className="md:hidden fixed top-0 w-full bg-white z-50 border-b p-4 flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                    <Globe className="text-purple-600" />
+                    <span className="font-bold">Smart Stadium</span>
+                </div>
+                {/* Simple mobile menu trigger could go here */}
+            </div>
+
+            {/* Main Content Area */}
+            <main className="flex-1 overflow-y-auto overflow-x-hidden pt-16 md:pt-0">
+                <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 md:px-8">
+                    {children}
+                </div>
             </main>
         </div>
     );

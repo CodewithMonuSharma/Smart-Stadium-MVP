@@ -30,9 +30,11 @@ export default function Landing() {
                 <div className="max-w-7xl mx-auto px-6 py-4">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate('/')}>
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/20">
+                            {/* <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/20">
                                 <Activity size={20} />
-                            </div>
+                            </div> */}
+                            <img src="/logo.png" alt="Logo" className="w-10 h-10 object-contain group-hover:scale-105 transition-transform" />
+
                             <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                                 Smart Stadium
                             </span>
@@ -48,9 +50,9 @@ export default function Landing() {
                                 </button>
                             ))}
                         </div>
-                        <div className="flex gap-4">
+                        {/* <div className="flex gap-4">
                             <Button className="bg-slate-900 text-white rounded-full px-6 font-bold shadow-lg" onClick={() => navigate('/dashboard')}>Enter Dashboard</Button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </nav>
@@ -106,11 +108,12 @@ export default function Landing() {
                             transition={{ duration: 1 }}
                             className="relative"
                         >
-                            <div className="relative w-full aspect-video rounded-[3rem] overflow-hidden shadow-[0_40px_80px_-15px_rgba(30,58,138,0.25)] border-[12px] border-white">
+
+                            <div className="relative w-full aspect-video rounded-[3rem] overflow-hidden shadow-[0_40px_80px_-15px_rgba(30,58,138,0.25)]">
                                 <img
                                     alt="Smart Stadium Dashboard"
                                     className="w-full h-full object-cover"
-                                    src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&q=80&w=1200"
+                                    src="https://readdy.ai/api/search-image?query=modern%20futuristic%20smart%20stadium%20aerial%20view%20with%20digital%20technology%20overlay%20holographic%20data%20visualization%20glowing%20purple%20and%20blue%20lights%20high-tech%20control%20center%20dashboard%20screens%20showing%20real-time%20analytics%20clean%20minimalist%20background&amp;width=800&amp;height=600&amp;seq=stadium-hero-001&amp;orientation=landscape"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-purple-900/30 to-transparent"></div>
                             </div>
@@ -254,9 +257,10 @@ export default function Landing() {
                     <div className="grid md:grid-cols-4 gap-12 mb-16">
                         <div className="space-y-6">
                             <div className="flex items-center gap-3">
-                                <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-lg border border-white/30 flex items-center justify-center">
+                                {/* <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-lg border border-white/30 flex items-center justify-center">
                                     <Activity size={24} />
-                                </div>
+                                </div> */}
+                                <img src="/logo.png" alt="Logo" className=" w-10 h-10 object-contain group-hover:scale-105 transition-transform" />
                                 <span className="text-2xl font-black tracking-tighter uppercase">Smart Stadium</span>
                             </div>
                             <p className="text-white/80 text-sm leading-relaxed font-medium">
