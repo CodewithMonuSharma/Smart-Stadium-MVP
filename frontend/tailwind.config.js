@@ -54,6 +54,17 @@ export default {
                 md: "calc(var(--radius) - 2px)",
                 sm: "calc(var(--radius) - 4px)",
             },
+            fontFamily: {
+                sans: ["Outfit", "sans-serif"],
+            },
+            letterSpacing: {
+                tightest: "-0.02em",
+                tighter: "-0.01em",
+                tight: "-0.01em", // Slight letter spacing
+            },
+            lineHeight: {
+                medium: "1.5",
+            },
         },
     },
     plugins: [],

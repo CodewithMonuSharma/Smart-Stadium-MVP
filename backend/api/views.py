@@ -14,29 +14,52 @@ import datetime
 # Dashboard: Stats
 class DashboardDataView(APIView):
     def get(self, request):
+        # 1. Jitter logic: simulate live data movement
+        zones = CrowdZone.objects.all()
+        for zone in zones:
+            change = random.randint(-5, 5)
+            zone.current_count = max(0, min(zone.capacity, zone.current_count + change))
+            zone.status = 'red' if zone.current_count / zone.capacity > 0.9 else 'green'
+            zone.save()
+
+        meters = EnergyMeter.objects.all()
+        for meter in meters:
+            meter.current_usage_kw = round(max(50, meter.current_usage_kw + random.uniform(-2, 2)), 1)
+            meter.save()
+
+        # 2. Aggregations
         active_events = Event.objects.filter(status='active').count()
         total_occupancy = CrowdZone.objects.aggregate(Sum('current_count'))['current_count__sum'] or 0
-        total_capacity = CrowdZone.objects.aggregate(Sum('capacity'))['capacity__sum'] or 1 # avoid div by zero
+        total_capacity = CrowdZone.objects.aggregate(Sum('capacity'))['capacity__sum'] or 1
         
-        occupancy_pct = int((total_occupancy / total_capacity) * 100) if total_capacity > 0 else 0
-        system_health = random.randint(90, 100)
+        occupancy_pct = int((total_occupancy / total_capacity) * 100)
+        system_health = random.randint(95, 100)
         
-        # Ticketing Summary
         tickets_sold = Ticket.objects.count()
         fraud_alerts = Ticket.objects.filter(fraud_score__gt=0.8).count()
-        
-        # Crowd Summary
         critical_zones = CrowdZone.objects.filter(status='red').count()
-        
-        # Energy Summary
         total_energy = EnergyMeter.objects.aggregate(Sum('current_usage_kw'))['current_usage_kw__sum'] or 0
         
-        # Merchandise Summary
-        total_merch_items = MerchandiseItem.objects.count()
-        total_revenue = MerchandiseItem.objects.all().aggregate(
-            revenue=Sum(F('price') * F('sold_count'))
-        )['revenue'] or 0
-        
+        # 3. Revenue & Items
+        merch_stats = MerchandiseItem.objects.all().aggregate(
+            revenue=Sum(F('price') * F('sold_count')),
+            total_items=Sum('stock_quantity')
+        )
+        total_revenue = merch_stats['revenue'] or 0
+
+        # 4. Alerts & Activity (Live from backend)
+        logs = SystemLog.objects.order_by('-timestamp')[:10]
+        serialized_logs = []
+        for log in logs:
+            serialized_logs.append({
+                "id": log.id,
+                "user": log.user.username if log.user else "System",
+                "action": log.action,
+                "detail": log.details,
+                "time": log.timestamp.strftime("%H:%M"),
+                "level": log.level
+            })
+
         return Response({
             "active_events": active_events,
             "occupancy_percentage": occupancy_pct,
@@ -54,8 +77,11 @@ class DashboardDataView(APIView):
             },
             "merchandise": {
                 "total_revenue": round(total_revenue, 2),
-                "total_items": total_merch_items
-            }
+                "total_items": merch_stats['total_items'] or 0,
+                "breakdown": MerchandiseItemSerializer(MerchandiseItem.objects.all()[:4], many=True).data
+            },
+            "activity": serialized_logs[:5],
+            "alerts": serialized_logs[5:10]
         })
 
 # Event

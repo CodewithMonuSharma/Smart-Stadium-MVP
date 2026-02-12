@@ -44,13 +44,13 @@ export default function Register() {
     };
 
     return (
-        <div className="flex h-screen w-full items-center justify-center bg-gray-50 px-4">
-            <div className="w-full max-w-sm space-y-6 bg-white p-8 rounded-2xl shadow-xl border border-gray-100 relative overflow-hidden">
+        <div className="flex min-h-screen py-10 w-full items-center justify-center bg-[#F8FAFC] px-4 font-sans">
+            <div className="w-full max-w-sm space-y-6 bg-white p-8 rounded-xl shadow-soft-lg border border-slate-100 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-blue-500" />
 
                 <div className="flex flex-col space-y-2 text-center">
-                    <h1 className="text-2xl font-semibold tracking-tight">Create an account</h1>
-                    <p className="text-sm text-gray-500">Enter your details to register</p>
+                    <h1 className="text-2xl font-bold tracking-tight text-[#111827]">Create an account</h1>
+                    <p className="text-sm text-slate-500">Join the Smart Stadium management platform</p>
                 </div>
 
                 {error && (
@@ -61,49 +61,49 @@ export default function Register() {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="space-y-2">
-                        <label className="text-sm font-medium leading-none" htmlFor="username">Username</label>
+                        <label className="text-sm font-semibold tracking-wide text-slate-700" htmlFor="username">Username</label>
                         <Input
                             id="username"
                             type="text"
                             placeholder="johndoe"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                            className="h-11 bg-gray-50 focus:bg-white transition-colors"
+                            className="h-11 bg-slate-50 border-slate-100 rounded-xl focus:bg-white transition-colors"
                         />
                     </div>
                     <div className="space-y-2">
-                        <label className="text-sm font-medium leading-none" htmlFor="email">Email</label>
+                        <label className="text-sm font-semibold tracking-wide text-slate-700" htmlFor="email">Email</label>
                         <Input
                             id="email"
                             type="email"
                             placeholder="name@example.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="h-11 bg-gray-50 focus:bg-white transition-colors"
+                            className="h-11 bg-slate-50 border-slate-100 rounded-xl focus:bg-white transition-colors"
                         />
                     </div>
                     <div className="space-y-2">
-                        <label className="text-sm font-medium leading-none" htmlFor="password">Password</label>
+                        <label className="text-sm font-semibold tracking-wide text-slate-700" htmlFor="password">Password</label>
                         <Input
                             id="password"
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="h-11 bg-gray-50 focus:bg-white"
+                            className="h-11 bg-slate-50 border-slate-100 rounded-xl focus:bg-white"
                         />
                     </div>
                     <div className="space-y-2">
-                        <label className="text-sm font-medium leading-none" htmlFor="confirmPassword">Confirm Password</label>
+                        <label className="text-sm font-semibold tracking-wide text-slate-700" htmlFor="confirmPassword">Confirm Password</label>
                         <Input
                             id="confirmPassword"
                             type="password"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
-                            className="h-11 bg-gray-50 focus:bg-white"
+                            className="h-11 bg-slate-50 border-slate-100 rounded-xl focus:bg-white"
                         />
                     </div>
 
-                    <Button className="w-full h-11 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-base font-bold shadow-lg shadow-purple-200" type="submit" disabled={loading}>
+                    <Button className="w-full h-11 bg-gradient-to-r from-purple-600 to-blue-600 hover:opacity-90 text-white font-semibold rounded-xl text-sm uppercase tracking-widest shadow-lg shadow-purple-50" type="submit" disabled={loading}>
                         {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Sign Up"}
                     </Button>
                 </form>
@@ -143,9 +143,9 @@ export default function Register() {
                     </Button>
                 </div>
 
-                <div className="text-center text-sm text-gray-500">
+                <div className="text-center text-sm text-slate-500">
                     Already have an account?{" "}
-                    <Link to="/login" className="text-purple-600 hover:text-purple-500 font-bold">
+                    <Link to="/login" className="text-purple-600 hover:text-purple-500 font-semibold text-sm">
                         Login
                     </Link>
                 </div>

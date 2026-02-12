@@ -24,23 +24,23 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     const location = useLocation();
 
     return (
-        <div className="flex h-screen bg-slate-50 font-['Outfit'] overflow-hidden">
+        <div className="flex h-screen bg-[#F8FAFC] font-sans overflow-hidden">
             {/* Sidebar Navigation */}
             <aside className="w-64 bg-white border-r border-slate-100 hidden md:flex flex-col h-full shadow-sm z-50">
                 {/* Logo Area */}
                 <div className="h-20 flex items-center px-8 border-b border-slate-50">
                     <Link to="/" className="flex items-center gap-3 group">
-                        <img src="/logo.png" alt="Logo" className="w-10 h-10 object-contain group-hover:scale-105 transition-transform" />
+                        <img src="/logo.png" alt="Logo" className="w-9 h-9 object-contain group-hover:scale-105 transition-transform" />
 
-                        <span className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                        <span className="text-xl font-bold text-[#111827] tracking-tight">
                             Smart Stadium
                         </span>
                     </Link>
                 </div>
 
                 {/* Navigation Items */}
-                <nav className="flex-1 overflow-y-auto py-6 px-4 space-y-2">
-                    <p className="px-4 text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Main Menu</p>
+                <nav className="flex-1 overflow-y-auto py-8 px-4 space-y-1.5">
+                    <p className="px-4 text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Main Menu</p>
                     {navItems.map((item) => {
                         const isActive = location.pathname === item.path;
                         const Icon = item.icon;
@@ -50,7 +50,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                 key={item.path}
                                 to={item.path}
                                 className={`flex items-center gap-4 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group relative ${isActive
-                                    ? 'bg-purple-50 text-purple-700 font-bold shadow-sm'
+                                    ? 'bg-purple-50 text-purple-700 font-semibold'
                                     : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
                                     }`}
                             >
@@ -70,12 +70,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 {/* Footer / User Profile Area */}
                 <div className="p-4 border-t border-slate-50">
                     <div className="flex items-center gap-3 px-4 py-3 bg-slate-50 rounded-xl">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-500 to-blue-500 flex items-center justify-center text-white text-xs font-bold">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-500 to-blue-500 flex items-center justify-center text-white text-[10px] font-bold">
                             MS
                         </div>
                         <div className="flex-1 min-w-0">
-                            <p className="text-sm font-bold text-slate-800 truncate">Admin User</p>
-                            <p className="text-xs text-slate-500 truncate">System Manager</p>
+                            <p className="text-sm font-semibold text-[#111827] truncate">Monu Sharma</p>
+                            <p className="text-[11px] font-medium text-slate-400 truncate tracking-wide">System Manager</p>
                         </div>
                     </div>
                 </div>
